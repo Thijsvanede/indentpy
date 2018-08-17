@@ -19,6 +19,11 @@ chmod +x ./install.sh
 ./install.sh
 ```
 
+You can also install directly from `pip`, however, this does not come with the additional command-line tools, only the python implementation.
+```
+pip3 install indentpy
+```
+
 ## Usage
 The python script can be used in several ways:
  1. As a command line program after installation.
@@ -86,4 +91,21 @@ python indent/indent.py -w outfile.py -o '	' -t '    ', infile.py
 ```
 
 ### Python
-TODO
+You can import the module as follows
+```
+from indentpy import indent
+```
+
+Next you can use the IndentChanger object to manipulate indentation of text and files.
+```
+# Import indent module
+from indentpy import indent
+
+# Create indentation changer
+ic = indent.IndentChanger()
+# Change regular text
+ic.change(<text>, original=<original_indentation>, desired=<desired_indentation>)
+# Change file
+ic.change(<file>, outfile=<outfile>, original=<original_indentation>, desired=<desired_indentation>)
+```
+See the pydoc for more information on how to use the python module.
