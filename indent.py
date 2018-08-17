@@ -114,7 +114,6 @@ class IndentChanger(object):
         
         # Change indentation style of text
         text = self.change(text, original, desired, delimiter)
-        print(original, desired)
         
         # Write text to outfile
         with open(outfile, 'w') as outfile:
