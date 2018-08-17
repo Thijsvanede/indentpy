@@ -58,7 +58,7 @@ indent -w outfile.py -o '	' -t '    ', infile.py
 ```
 
 ### Command-line (From source)
-To run the program from source, you can use both `Python 2` and `Python 3`. The usage of indent.py is explained in the help file below.
+To run the program from source, you can use both `Python 2` and `Python 3`. The usage of `indent/indent.py` is explained in the help file below.
 ```
 usage: indent.py [-h] [-w WRITE] [-o ORIG] [-t TO] [-d DELIM] file [file ...]
 
@@ -82,7 +82,7 @@ optional arguments:
 #### Example
 The following example takes `infile.py`, transforms the original `\t` indentation to 4 spaces and finally writes it to `outfile.py`.
 ```
-python indent.py -w outfile.py -o '	' -t '    ', infile.py
+python indent/indent.py -w outfile.py -o '	' -t '    ', infile.py
 ```
 
 ### Python

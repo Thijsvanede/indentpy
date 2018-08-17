@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy scripts to local bin
-cp indent.py ~/.local/bin/indent.py
+cp indentpy/indent.py ~/.local/bin/indent.py
 cp indent ~/.local/bin/indent
 
 # Make scripts executable
