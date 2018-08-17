@@ -56,7 +56,11 @@ set -- "${POSITIONAL[@]}" # Restore positional parameters
 #         Invoke python script         #
 ########################################
 # Set initial command
-command="python3 indent.py"
+if command -v python3 &>/dev/null; then
+	command="python3 indent.py"
+else
+	command="python indent.py"
+fi
 
 # Add arguments if any
 if [[ ! -z "$outfile"   ]]; then command="$command -w $outfile"  ; fi
