@@ -1,0 +1,68 @@
+#!/bin/bash
+
+########################################
+#                Help page             #
+########################################
+usage="Usage: $(basename "$0") [-h] [-w WRITE] [-o ORIG] [-t TO] [-d DELIM]
+                         file [file ...]
+
+Change indentation of file(s).
+
+positional arguments:
+    file    File(s) for which to change indentation.
+
+optional arguments:
+    -h    Show this help text.
+    -d    Line delimiter in original file    (optional, default='\n').
+    -o    Indentation style in original file (optional, default='\t').
+    -t    Indentation style in desired  file (optional, default='    ').
+    -w    File to write output to (optional, default writes to inputfile).
+"
+
+########################################
+#           Argument parsing           #
+########################################
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+	option="$1"
+
+	case "$option" in
+		-d|--delimiter)
+			delimiter="$2"
+			shift;shift;;
+		-o|--original)
+			original="$2"
+			shift;shift;;
+		-t|--to)
+			to="$2"
+			shift;shift;;
+		-w|--write)
+			outfile="$2"
+			shift;shift;;
+		-h|--help)
+			echo "$usage"
+			exit
+			;;
+		*)
+		POSITIONAL+=("$1")
+			shift;;
+	esac
+done
+
+set -- "${POSITIONAL[@]}" # Restore positional parameters
+
+########################################
+#         Invoke python script         #
+########################################
+# Set initial command
+command="python3 indent.py"
+
+# Add arguments if any
+if [[ ! -z "$outfile"   ]]; then command="$command -w $outfile"  ; fi
+if [[ ! -z "$original"  ]]; then command="$command -o $original" ; fi
+if [[ ! -z "$to"        ]]; then command="$command -t $to"       ; fi
+if [[ ! -z "$delimiter" ]]; then command="$command -o $delimiter"; fi
+
+# Execute command
+$command "$@"
