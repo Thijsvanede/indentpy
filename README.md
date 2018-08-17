@@ -92,12 +92,12 @@ python indent/indent.py -w outfile.py -o '	' -t '    ', infile.py
 
 ### Python
 You can import the module as follows
-```
+```python
 from indentpy import indent
 ```
 
 Next you can use the IndentChanger object to manipulate indentation of text and files.
-```
+```python
 # Import indent module
 from indentpy import indent
 
